@@ -1,4 +1,5 @@
 print("WELCOME TO ALQUERQUE")
+print("First, run the is_human_player command to determine what players are human, it only takes boolean value")
 print("Run the start_game() command to run the game")
 
 def is_human_player(n: bool, b: bool)-> str:
