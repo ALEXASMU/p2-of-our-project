@@ -5,6 +5,8 @@ print("After this, run the start_game() command to run the game")
 def is_human_player(n: bool, b: bool)-> str:
     """Function that checks if both players are human, it takes boolean values and
     returns a string
+    is_human_player(True, False)
+    >>>player 1 is a human and player 2 is a bot
     """
     if n == True and b == True:
         return("Both players are human")
