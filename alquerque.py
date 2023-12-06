@@ -1,3 +1,7 @@
+from board import *
+from move import *
+from minimax import *
+
 def start_game():
     """
     Determines wether or not a player is a bot
