@@ -1,6 +1,7 @@
 from board import *
 from move import *
 from minimax import *
+from dataclasses import dataclass
 
 def start_game():
     """
