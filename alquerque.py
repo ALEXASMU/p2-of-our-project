@@ -3,6 +3,7 @@ from move import *
 from minimax import *
 from dataclasses import dataclass
 
+game_type = 0
 def start_game():
     """
     initializes the game by telling the player to pick 1 out of 4 options
@@ -17,24 +18,23 @@ def start_game():
     : 4
     You chose to watch a match between 2 bots
     """
-    print("""
+   print("""
     WELCOME TO ALQUERQUE!!!
     """)
-    print("Player 1 starts, please pick one of the 4 options")
+    print("Player 1 starts")
     print("type 1 to play against a human")
     print("type 2 to play against a bot as white")
     print("type 3 to play against a bot as black")
     print("type 4 to see two bots play")
-    global game_type
     game_type = int(input(": "))
-    
-    if game_type == 1:
-        print("You chose to play against a human")
-    elif game_type == 2:
-        print("You chose to play against a bot as white")
-    elif game_type == 3:
-        print("You chose to play against a bot as black")
-    elif game_type == 4: 
-        print("You chose to watch a match between 2 bots")
-    else:
-        print("Pick 1-4 you fucking dumbass")
+    match game_type:
+            case 1:
+                print("You chose to play against a human")
+            case 2:
+                print("You chose to play against a bot as white")
+            case 3:
+                print("You chose to play against a bot as black")
+            case 4:
+                print("You chose to watch a match between 2 bots")
+            case _:
+                print("Please select any number 1-4")
