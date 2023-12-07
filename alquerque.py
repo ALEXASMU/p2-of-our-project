@@ -4,6 +4,8 @@ from minimax import *
 from dataclasses import dataclass
 
 game_type = 0
+def start_game():
+    
 def start_menu():
     """
     initializes the game by telling the player to pick 1 out of 4 options
