@@ -36,3 +36,5 @@ def start_game():
         print("You chose to play against a bot as black")
     elif game_type == 4: 
         print("You chose to watch a match between 2 bots")
+    else:
+        print("Pick 1-4 you fucking dumbass")
