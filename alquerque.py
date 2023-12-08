@@ -26,7 +26,7 @@ def start_menu():
     print("type 2 to play against a bot as white")
     print("type 3 to play against a bot as black")
     print("type 4 to see two bots play")
-    global game_type
+    global game_type #Using the global keyword, so it can be called anywhere
     game_type = int(input(": "))
     match game_type:
             case 1:
