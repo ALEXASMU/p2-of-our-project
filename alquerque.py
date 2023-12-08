@@ -2,7 +2,8 @@ from board import *
 from move import *
 from minimax import *
 from dataclasses import dataclass
-    
+def start_game():
+    return start_menu()
 def start_menu():
     """
     initializes the game by telling the player to pick 1 out of 4 options
