@@ -40,3 +40,7 @@ def start_menu():
             case _:
                 print("Please select any number 1-4")
 
+def _start_game():
+    """
+    Will start the game inbetween two players, if 1 bot or more, will ask to select difficulty
+    """
