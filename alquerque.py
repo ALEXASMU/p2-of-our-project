@@ -39,37 +39,33 @@ def start_menu():
                 print("You chose to watch a match between 2 bots")
             case _:
                 print("Please select any number 1-4")
-    while input == "ja":
-        while is_game_over(b):
 
 
 
 
 
-def piece_draw(color: str) -> str:
-    return "x" if color == "black" else "O" if color == "white" else space()
+def _piece_draw(color: str) -> str:
+    return "x" if color == "black" else "O" if color == "white" else "H"
 
-def Horizontal() -> str:
+def _Horizontal() -> str:
     return "---"
 
-def Vertical() -> str:
+def _Vertical() -> str:
     return "| "
-def space() -> str:
-    return " "
 
 def Board_Composer(b :Board) -> str:
     img = ""
     board = ["black" if x in black(b) else "white" if x in white(b) else "empty" for x in range(1,26)]
     for y in range(0,5):
         for x in range(0,5):
-            img = img + piece_draw(board[x+y*5])
+            img = img + _piece_draw(board[x+y*5])
             if x != 4:
-                img = img + Horizontal()
+                img = img + _Horizontal()
           
         img = img + " " + str(5 - y) + "\n" 
         if y != 4 :
             for x in range(0,5):
-                img = img + Vertical()
+                img = img + _Vertical()
                 if x == y:
                     img = img + "\\ "
                 elif x == 3-y:
@@ -85,3 +81,4 @@ def Board_Composer(b :Board) -> str:
 
     return img
 
+print(Board_Composer(make_board()))
