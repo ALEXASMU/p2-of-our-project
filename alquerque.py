@@ -3,7 +3,7 @@ from move import *
 from minimax import *
 from dataclasses import dataclass
 def start_game():
-    return start_menu()
+    start_menu()
 def start_menu():
     """
     initializes the game by telling the player to pick 1 out of 4 options
@@ -27,7 +27,7 @@ def start_menu():
     print("type 3 to play against a bot as black")
     print("type 4 to see two bots play")
     global game_type #Using the global keyword, so it can be called anywhere
-    game_type = int(input(": "))
+    game_type = int(input(": ")) #Typecasting input to an int
     match game_type:
             case 1:
                 print("You chose to play against a human")
@@ -39,9 +39,6 @@ def start_menu():
                 print("You chose to watch a match between 2 bots")
             case _:
                 print("Please select any number 1-4")
-
-
-
 
 
 def _piece_draw(color: str) -> str:
@@ -82,3 +79,9 @@ def Board_Composer(b :Board) -> str:
     return img
 
 print(Board_Composer(make_board()))
+
+def _start_game():
+    """
+    Will start the game inbetween two players, if 1 bot or more, will ask to select difficulty
+    """
+
