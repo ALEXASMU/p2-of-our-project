@@ -10,6 +10,7 @@ class Board:
     board: list[list[int]]
     player: int
 
+
 def _row(pos: int) -> int:
     """Row corresponding to pos."""
     return (pos-1)//5

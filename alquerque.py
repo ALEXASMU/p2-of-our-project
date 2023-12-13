@@ -40,7 +40,48 @@ def start_menu():
             case _:
                 print("Please select any number 1-4")
 
+
+def _piece_draw(color: str) -> str:
+    return "x" if color == "black" else "O" if color == "white" else "H"
+
+def _Horizontal() -> str:
+    return "---"
+
+def _Vertical() -> str:
+    return "| "
+
+def Board_Composer(b :Board) -> str:
+    img = ""
+    board = ["black" if x in black(b) else "white" if x in white(b) else "empty" for x in range(1,26)]
+    for y in range(0,5):
+        for x in range(0,5):
+            img = img + _piece_draw(board[x+y*5])
+            if x != 4:
+                img = img + _Horizontal()
+          
+        img = img + " " + str(5 - y) + "\n" 
+        if y != 4 :
+            for x in range(0,5):
+                img = img + _Vertical()
+                if x == y:
+                    img = img + "\\ "
+                elif x == 3-y:
+                    img = img + "/ "
+                elif abs(y-x) == 1 and x != 4:
+                    img = img + "/ "
+                elif abs(3-y-x) == 1 and x != 4:
+                    img = img + "\\ "
+
+            img = img + "\n"
+    for x in range(0,5):
+        img = img + chr(ord("a") + x) + "   "
+
+    return img
+
+print(Board_Composer(make_board()))
+
 def _start_game():
     """
     Will start the game inbetween two players, if 1 bot or more, will ask to select difficulty
     """
+
