@@ -22,5 +22,42 @@ When working with section 2 of the project, we were faced with the task of devel
 
 \section{}
 
+\section{Board_Composer function}
+\subsection{Function I/O}
+This function takes in a board, of which needs to be displayed, and returns a string that contains a human readable representation of the board.
+\subsection{Function internal mechanics}
+This function has divided the internal operations into four parts.\\
+part 1 handles the conversion of the data acquired through board.py.\\
+Part 2 handles the rows which contain the pieces to be drawn.\\
+Part 3 handles the rows which cannot contain any pieces.\\
+Part 4 prints the characters and numbers that are besides the board.\\
+
+\subsubsection{Part 1}
+This part transforms the indekses of the pieces, given by black() and white() from board.py, into a list with 25 elements of which each element reoresents wether or not a piece is at the given position.
+
+\subsubsection{Part 2}
+This part prints a character to represent each position, followed by 3 horizontal lines, for each row and column, of note the last columns horizontal lines is specificly not printed.
+
+\subsubsection{Part 3}
+This part prints a vertical line under each character, followed by a diagonal line, for each row and column, except the last row.
+
+\subsubsection{Part 3}
+This part prints numbers corrosponding to a specific row after each row containing pieces, and after everyother part is done it print the characters corrosponding to each column under every column that contains pieces.\\
+This is done to help the user specify which piece they want to move and to where they want it to move.
+
+\subsection{Function testing}
+This function has been given the default board afterwhich it has returned this string
+"x---x---x---x---x 5\\
+| \ | / | \ | / |\\
+x---x---x---x---x 4\\
+| / | \ | / | \ |\\
+x---x--- ---O---O 3\\
+| \ | / | \ | / |\\
+O---O---O---O---O 2\\
+| / | \ | / | \ |\\
+O---O---O---O---O 1\\
+a   b   c   d   e"\\
+which matches how an alquerque board should look\\
+
 \end{document}
 

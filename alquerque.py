@@ -42,7 +42,7 @@ def start_menu():
 
 
 def _piece_draw(color: str) -> str:
-    return "x" if color == "black" else "O" if color == "white" else "H"
+    return "x" if color == "black" else "O" if color == "white" else " "
 
 def _Horizontal() -> str:
     return "---"
