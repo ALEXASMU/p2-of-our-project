@@ -20,7 +20,16 @@
 When working with section 2 of the project, we were faced with the task of developing the module known as alquerque.py. This module is what allows the user to play the game alquerque in a terminal. This program starts by asking the users what type of game they want to play, and then it proceeds to initiate. After the program initiates, the game begins, if the players are bots, it tells the user, what moves the bot made. If the moves, however, are by a player, the player must insert their own moves. The way these moves are made are by standard grid format. In this format, rows are represented by letters, and columns are represented by numbers.
 \end{abstract}
 
-\section{}
+\section{game\_over}
+\subsection{Function I/O}
+This function takes in a board and prints a game over screen, of note this function requires is_game_over(), from board.py, to be true
+
+\subsection{Function internal mechanics}
+This function first checks wether or not the game ended in a draw, then if it hasn't it proceeds find out which player won, then it display to corrosponding output
+
+\subsection{Function testing}
+Given any board containing both player's pieces it should in a draw, the default board setup contains both and also returns a draw.
+If one player has lost all pieces the other player has won, which when the function is given such a board it does return the correct winner.
 
 \end{document}
 
