@@ -95,5 +95,6 @@ def game_over(b:Board) -> None:
         print("White won!")
     else:
         print("Black won!")
+    input()
 
 
