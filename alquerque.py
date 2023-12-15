@@ -41,7 +41,9 @@ def start_menu():
             case 4:
                 print("You chose to watch a match between 2 bots")
             case _:
-                print("Please select any number 1-4")
+                start_menu()
+                return
+    
     print('Lets start the game!?')
     print('ENTER')
     input()
