@@ -80,6 +80,7 @@ def player_turn(b: Board) -> None:
             bot_play(b)
         else:
             human_player(b)
+    gamestate(b)
 
 def bot_play(b: Board) -> None:
     """Bot makes move, then informs about move.
