@@ -155,6 +155,9 @@ def _Vertical() -> str:
     return "| "
 
 def Board_Composer(b :Board) -> str:
+    """
+    Create a string containing a human readable format på the given board
+    """
     img = ""
     board = ["black" if x in black(b) else "white" if x in white(b) else "empty" for x in range(1,26)]
     for y in range(0,5):
