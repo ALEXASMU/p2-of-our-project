@@ -2,8 +2,10 @@ from board import *
 from move import *
 from minimax import *
 from dataclasses import dataclass
+
 def start_game():
     start_menu()
+    
 def start_menu():
     """
     initializes the game by telling the player to pick 1 out of 4 options
@@ -28,6 +30,7 @@ def start_menu():
     print("type 4 to see two bots play")
     global game_type #Using the global keyword, so it can be called anywhere
     game_type = int(input(": ")) #Typecasting input to an int
+    print('')
     match game_type:
             case 1:
                 print("You chose to play against a human")
@@ -39,15 +42,25 @@ def start_menu():
                 print("You chose to watch a match between 2 bots")
             case _:
                 print("Please select any number 1-4")
+    print('Lets start the game!?')
+    print('ENTER')
+    input()
+    print('')
     bo = make_board()
-    game_state(bo)
+    print(Board_Composer(bo))
+    return game_state(bo)
+    
 
 def game_state(b: Board) -> None:
     """Checks wether game over.
        Results in call player_turn or game_over.
     """
-    if is_game_over:
-        game_over
+    i = 0
+    while i < 3:
+        print('')
+        i = i + 1
+    if is_game_over(b):
+        game_over(b)
     else:
         player_turn(b)
             
@@ -56,13 +69,13 @@ def player_turn(b: Board) -> None:
        Uses distinct process flow for human/ vs bot play.
     """
     if white_plays:
-        print('White is playing.')
+        print('White (O) is playing.')
         if game_type == 3 or game_type == 4:
             bot_play(b)
         else:
             human_player(b)
     else:
-        print('Black is playing.')
+        print('Black (x) is playing.')
         if game_type == 2 or game_type == 4:
             bot_play(b)
         else:
@@ -74,7 +87,7 @@ def bot_play(b: Board) -> None:
     ne = next_move(b)
     move(ne, b)
     print(f"Bot has moved {_coordinates_move(ne)}")
-    Board_Composer(b)
+    print(Board_Composer(b))
         
 def human_player(b: Board) -> None:
     """Asks human player to make move.
@@ -88,10 +101,10 @@ def human_player(b: Board) -> None:
     print(f'You selected {source}, now choose where to move it')
     target = _translatetoint(input(''))
     source = _translatetoint(source)
-    move = (source, target)
-    if is_legal(move, b):
-        Move(move, b)
-        Board_Composer(b)
+    m = make_move(source, target)
+    if is_legal(m, b):
+        move(m, b)
+        print(Board_Composer(b))
     else:
         print('Wrong input, please try again!')
         human_player(b)
@@ -104,26 +117,23 @@ def _coordinates_move(m: Move) -> str:
     return statement
 
 def _translatetostr(a: int) -> str:
-    ans = ''
-    ans = ans + [['a' if a % 5 == 1
-                 else 'b' if a % 5 == 2
-                 else 'c' if a % 5 == 3
-                 else 'd' if a % 5 == 4
-                 else 'e']
-                ['1' if a >= 21
-                 else '2' if 16 <= a <= 20
-                 else '3' if 11 <= a <= 15
-                 else '4' if 6 <= a <= 10
-                 else '5']]
-    return ans
+    letter = 'a' if a % 5 == 1 else \
+             'b' if a % 5 == 2 else \
+             'c' if a % 5 == 3 else \
+             'd' if a % 5 == 4 else \
+             'e'
+    number = '1' if a >= 21 else \
+             '2' if 16 <= a <= 20 else \
+             '3' if 11 <= a <= 15 else \
+             '4' if 6 <= a <= 10 else \
+             '5'
+    return letter + number
+
 
 def _translatetoint(a: str) -> int:
     x = (ord(a[0]) - 96)
-    y = (5 - a[1])
+    y = (5 - int(a[1]))
     return (x + y * 5)
-    
-
-
 
 
 def _piece_draw(color: str) -> str:
@@ -143,7 +153,6 @@ def Board_Composer(b :Board) -> str:
             img = img + _piece_draw(board[x+y*5])
             if x != 4:
                 img = img + _Horizontal()
-          
         img = img + " " + str(5 - y) + "\n" 
         if y != 4 :
             for x in range(0,5):
@@ -156,14 +165,10 @@ def Board_Composer(b :Board) -> str:
                     img = img + "/ "
                 elif abs(3-y-x) == 1 and x != 4:
                     img = img + "\\ "
-
             img = img + "\n"
     for x in range(0,5):
         img = img + chr(ord("a") + x) + "   "
-
     return img
-
-print(Board_Composer(make_board()))
 
 def _start_game():
     """
@@ -171,7 +176,6 @@ def _start_game():
     """
 
 def game_over(b:Board) -> None:
-    
     print("Game Over!")
     if black(b) != [] and white(b) != []:
         print("The game ended in a draw")
@@ -182,4 +186,6 @@ def game_over(b:Board) -> None:
         print("Black won!")
     input()
 
-
+"""
+start_game()
+"""
