@@ -36,10 +36,13 @@ def start_menu():
                 print("You chose to play against a human")
             case 2:
                 print("You chose to play against a bot as white")
+                diff()
             case 3:
                 print("You chose to play against a bot as black")
+                diff()
             case 4:
                 print("You chose to watch a match between 2 bots")
+                diff()
             case _:
                 start_menu()
                 return
@@ -51,7 +54,10 @@ def start_menu():
     bo = make_board()
     print(Board_Composer(bo))
     return game_state(bo)
-    
+
+def diff() -> None:
+    global difficulty
+    difficulty = int(input("please select a difficulty between 1 and 7"))
 
 def game_state(b: Board) -> None:
     """Checks wether game over.
@@ -87,7 +93,7 @@ def player_turn(b: Board) -> None:
 def bot_play(b: Board) -> None:
     """Bot makes move, then informs about move.
     """
-    ne = next_move(b)
+    ne = next_move(b, difficulty)
     move(ne, b)
     print(f"Bot has moved {_coordinates_move(ne)}")
     print(Board_Composer(b))
