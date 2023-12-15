@@ -39,6 +39,8 @@ def start_menu():
                 print("You chose to watch a match between 2 bots")
             case _:
                 print("Please select any number 1-4")
+    bo = make_board()
+    game_state(bo)
 
 def game_state(b: Board) -> None:
     """Checks wether game over.
