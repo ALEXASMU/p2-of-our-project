@@ -68,7 +68,7 @@ def player_turn(b: Board) -> None:
     """Either plays for White or Black.
        Uses distinct process flow for human/ vs bot play.
     """
-    if white_plays:
+    if white_plays():
         print('White (O) is playing.')
         if game_type == 3 or game_type == 4:
             bot_play(b)
