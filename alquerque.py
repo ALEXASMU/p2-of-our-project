@@ -127,7 +127,7 @@ def _translatetoint(a: str) -> int:
 
 
 def _piece_draw(color: str) -> str:
-    return "x" if color == "black" else "O" if color == "white" else "H"
+    return "x" if color == "black" else "O" if color == "white" else " "
 
 def _Horizontal() -> str:
     return "---"
@@ -169,4 +169,17 @@ def _start_game():
     """
     Will start the game inbetween two players, if 1 bot or more, will ask to select difficulty
     """
+
+def game_over(b:Board) -> None:
+    
+    print("Game Over!")
+    if black(b) != [] and white(b) != []:
+        print("The game ended in a draw")
+        return
+    elif white_plays(b):
+        print("White won!")
+    else:
+        print("Black won!")
+    input()
+
 
